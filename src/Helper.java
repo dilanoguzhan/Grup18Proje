@@ -2,7 +2,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Helper {
-    static Scanner scan = new Scanner(System.in);
+    static Scanner oku = new Scanner(System.in);
 //hhhhh
     private static String loggedInUsername;
     private static UserRole loggedInUserRole;
@@ -15,9 +15,9 @@ public class Helper {
 
         do {
             System.out.print("Username=");
-            username = scan.nextLine();
+            username = oku.nextLine();
             System.out.print("Sifre=");
-            sifre = scan.nextLine();
+            sifre = oku.nextLine();
             if (username.equals("admin") && sifre.equals("Admin123")) {
                 calisti=true;
                 showAdminMenu();
@@ -77,7 +77,7 @@ public class Helper {
                            "\t   Q- CIKIS\n");
            System.out.print("Lutfen Menuden tercihinizi yapiniz:"+tercih);
 
-            tercih = scan.nextLine().toLowerCase();
+            tercih = oku.nextLine().toLowerCase();
             switch (tercih) {
                 case "1":
 
@@ -121,10 +121,10 @@ public class Helper {
     }
 
     private static void loginAndShowUserMenu(UserRole requiredRole) throws InterruptedException {
-        System.out.print("Kullanici Adi: ");
-        String username = scan.nextLine();
+        System.out.print("Kullanici Adi= ");
+        String username = oku.nextLine();
         System.out.print("Sifre: ");
-        String password = scan.nextLine();
+        String password = oku.nextLine();
 
         //Kullanıcıdan aldığınız username ve password, authenticateUser(String username, String password)
         //metodunda doğrulamaya tabi tutuluyor...
@@ -174,7 +174,7 @@ public class Helper {
                         "\t   Q- CIKIS");
 
         System.out.print("Seciminiz=");
-        secim=scan.nextLine();
+        secim=oku.nextLine();
 
 
         switch (secim){
@@ -226,7 +226,7 @@ public class Helper {
             //TODO Kullanıcıdan alacağınız tercihlere göre ilgili menüye (metoda) yönlendirme yapınız...
 
             System.out.print("User Menüden bir tercih yapiniz: ");
-            tercih=scan.nextLine().toLowerCase();
+            tercih=oku.nextLine().toLowerCase();
 
             switch (tercih){
                 case "1":
