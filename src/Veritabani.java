@@ -4,6 +4,7 @@ import java.util.Map;
 public class Veritabani {
 
     static Map<String, String> uyelerMap = new HashMap<>();
+
     public static void baslangicUyelerVeritabaniOlustur() { // BU METODU DEĞİŞTİRMENİZE GEREK YOK...
         uyelerMap.put("469922399405", "Ali, Can, Izmir, 2008");
         uyelerMap.put("165776787406", "Hikmet, Ran, Ankara, 2000");
@@ -17,7 +18,8 @@ public class Veritabani {
         uyelerMap.put("212454369848", "Nermin, Ali, Ankara, 1983");
     }
 
-   static Map<String, String> kitaplarMap = new HashMap<>();
+    static Map<String, String> kitaplarMap = new HashMap<>();
+
     public static void baslangicKitaplarVeritabaniOlustur() { // BU METODU DEĞİŞTİRMENİZE GEREK YOK...
         kitaplarMap.put("A Tales of Two Citie", "Charles Dickens, TARIH, 1859");
         kitaplarMap.put("Ten Littles Nigger", "Agatha Christie, POLISIYE, 1939");
@@ -28,10 +30,12 @@ public class Veritabani {
         kitaplarMap.put("Simyaci", "Paulo Coelho, ROMAN, 1988");
         kitaplarMap.put("Hayvan Ciftligi", "George Orwell, ROMAN, 1945");
         kitaplarMap.put("Bindokuzyuzseksendort", "George Orwell, ROMAN, 1949");
-        kitaplarMap.put("Harry Potter", "                       , KURGU, 1997");
+        kitaplarMap.put("Harry Potter", "J.K. Rowling, KURGU, 1997");
     }
 
-    static Map<String, String> oduncAlinanKitaplarMap=new HashMap<>();
+    static Map<String, String> oduncAlinanKitaplarMap = new HashMap<>();
     //TODO Ödünç Alınan Kitapları Tutmak için Bir Map tanımlayın...
+
+    static Map<String, String> iadeEdilenKitaplarMap = new HashMap<>();
 
 }
