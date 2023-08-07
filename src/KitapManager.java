@@ -153,33 +153,40 @@ public class KitapManager extends Veritabani {
 
     private static void kitapEkle() {
 
-        Scanner oku = new Scanner(System.in);
-        System.out.print("Kitabin Adini giriniz: ");
-        String kitapAdi = oku.nextLine();
+        Scanner oku=new Scanner(System.in);
+        System.out.print("Kitap Adini giriniz=");
 
-        System.out.print("Yazarin adini giriniz: ");
-        String yazarAdi = oku.nextLine();
+        String kitapAdi=oku.nextLine();
 
-        KitapTuru kitapTuru;
+        System.out.print("Yazarin Adini giriniz=");
+        String yazarAdi= oku.nextLine();
 
-        while (true) {
-            System.out.print("Kitap Türü: " +
-                    "Tarih\n" +
-                    "Polisiye\n" +
-                    "Kurgu\n" +
-                    "ROman\n" +
-                    "DesTan\n");
-            String Tur = oku.nextLine();
+        KitapTuru kitapTuru= null;
+        boolean turGecersiz=true;
+
+        while (turGecersiz){
+            System.out.println("Kitap Turunu Giriniz (Tarih, Polisiye, Kurgu, Roman, Destan): ");
+            String tur=oku.nextLine();
 
             try {
-                kitapTuru = KitapTuru.valueOf(Tur.toUpperCase());
-                break;
-            } catch (IllegalArgumentException e) {
-                System.out.println("Hatali giris yaptiniz. Kitap türünü tekrar giriniz");
+                kitapTuru=KitapTuru.valueOf(tur.toUpperCase());
+                turGecersiz=false;
+
+            }catch (IllegalArgumentException e){
+                System.out.println("Hatali giris! Lütfen kitap türünü tekrar giriniz");
             }
         }
-        System.out.print("Yayinlanma Yilini giriniz=");
-        int yayinYili = Integer.parseInt(oku.nextLine());
+        System.out.print("Yayinlanma Yilini giriniz: ");
+        int yayinYili=oku.nextInt();
+        oku.nextLine();
+
+        String kitapBilgisi = yazarAdi + ", " + kitapTuru + ", " + yayinYili;
+
+        kitaplarMap.put(kitapAdi, kitapBilgisi);
+
+        System.out.println("Kitap ekleme islemi tamamlandi.");
+
+
 
         //"A Tale of Two Cities", "Charles Dickens, Tarih, 1859" >> Kitap key,value su buna benzer şekilde...
 
