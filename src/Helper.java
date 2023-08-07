@@ -90,7 +90,8 @@ public class Helper {
                     loginAndShowUserMenu(UserRole.ADMIN);   ;break;
 
                 case "Q":
-                    System.out.println("menuden cikis yaptiniz");break;
+                    System.out.println("menuden cikis yaptiniz");
+                    projeDurdur();
                 default:
 
                     System.out.print("Lutfen gecerli bir tercih giriniz:");

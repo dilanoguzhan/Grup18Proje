@@ -74,17 +74,15 @@ public class KitapManager extends Veritabani {
         String kitapIsmi = oku.nextLine();
 
         if (oduncAlinanKitaplarMap.containsKey(kitapIsmi)) {
-            // Book exists in the borrowed books map, which means it's already borrowed
-            System.out.println("Bu kitap zaten odunc alinmis!");
-        } else if (kitaplarMap.containsKey(kitapIsmi)) {
-            // Get the book information from the main kitaplarMap
-            String kitapBilgisi = kitaplarMap.get(kitapIsmi);
 
-            // Add the book to the borrowed books map
+            System.out.println("Bu kitap zaten odunc alinmis!");
+
+        } else if (kitaplarMap.containsKey(kitapIsmi)) {
+            String kitapBilgisi = kitaplarMap.get(kitapIsmi);
             oduncAlinanKitaplarMap.put(kitapIsmi, kitapBilgisi);
-            // Remove the book from the main kitaplarMap
             kitaplarMap.remove(kitapIsmi);
             System.out.println(kitapIsmi + " adli kitap odunc alindi.");
+
         } else {
             System.out.println("Kitap bulunamadi. Lutfen gecerli bir kitap ismi giriniz.");
         }
@@ -153,31 +151,31 @@ public class KitapManager extends Veritabani {
 
     private static void kitapEkle() {
 
-        Scanner oku=new Scanner(System.in);
+        Scanner oku = new Scanner(System.in);
         System.out.print("Kitap Adini giriniz=");
 
-        String kitapAdi=oku.nextLine();
+        String kitapAdi = oku.nextLine();
 
         System.out.print("Yazarin Adini giriniz=");
-        String yazarAdi= oku.nextLine();
+        String yazarAdi = oku.nextLine();
 
-        KitapTuru kitapTuru= null;
-        boolean turGecersiz=true;
+        KitapTuru kitapTuru = null;
+        boolean turGecersiz = true;
 
-        while (turGecersiz){
+        while (turGecersiz) {
             System.out.println("Kitap Turunu Giriniz (Tarih, Polisiye, Kurgu, Roman, Destan): ");
-            String tur=oku.nextLine();
+            String tur = oku.nextLine();
 
             try {
-                kitapTuru=KitapTuru.valueOf(tur.toUpperCase());
-                turGecersiz=false;
+                kitapTuru = KitapTuru.valueOf(tur.toUpperCase());
+                turGecersiz = false;
 
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("Hatali giris! Lütfen kitap türünü tekrar giriniz");
             }
         }
         System.out.print("Yayinlanma Yilini giriniz: ");
-        int yayinYili=oku.nextInt();
+        int yayinYili = oku.nextInt();
         oku.nextLine();
 
         String kitapBilgisi = yazarAdi + ", " + kitapTuru + ", " + yayinYili;
@@ -185,7 +183,6 @@ public class KitapManager extends Veritabani {
         kitaplarMap.put(kitapAdi, kitapBilgisi);
 
         System.out.println("Kitap ekleme islemi tamamlandi.");
-
 
 
         //"A Tale of Two Cities", "Charles Dickens, Tarih, 1859" >> Kitap key,value su buna benzer şekilde...
@@ -214,12 +211,12 @@ public class KitapManager extends Veritabani {
 
         //TODO kitaplar.Map'in Value larını almak için  Set<Map.Entry<String, String>> cinsinden myEntrySet tanımlayın...
 
-        Scanner oku=new Scanner(System.in);
+        Scanner oku = new Scanner(System.in);
         System.out.println("Aradiginiz kitabin türünü veya yayin yilini giriniz: ");
-        String aranan= oku.nextLine();
+        String aranan = oku.nextLine();
 
         Set<Map.Entry<String, String>> entrySet = kitaplarMap.entrySet();
-        boolean bulunanKitap=false;
+        boolean bulunanKitap = false;
 
         System.out.println("(Tarih, Polisiye, Kurgu, Roman, Destan)");
         //TODO Metodu kullanıcıdan alacağınız girdileri kullanarak tamamlayın...
@@ -229,21 +226,21 @@ public class KitapManager extends Veritabani {
                         "================= KITAP LISTESI ===============\n" +
 
                         "Kitap Ismi     :   Yazar Ismi , Kitap Turu , Yayin Yili");
-        for (Map.Entry<String, String> entry: entrySet){
-            String kitapAdi= entry.getKey();
-            String yazarBilgisi= entry.getValue();
-            String[] kitapBilgileri= yazarBilgisi.split(", ");
-            String kitapTuru=kitapBilgileri[1];
-            String yayinYili=kitapBilgileri[2];
+        for (Map.Entry<String, String> entry : entrySet) {
+            String kitapAdi = entry.getKey();
+            String yazarBilgisi = entry.getValue();
+            String[] kitapBilgileri = yazarBilgisi.split(", ");
+            String kitapTuru = kitapBilgileri[1];
+            String yayinYili = kitapBilgileri[2];
 
-            if (kitapTuru.equalsIgnoreCase(aranan)|| yayinYili.equals(aranan)){
+            if (kitapTuru.equalsIgnoreCase(aranan) || yayinYili.equals(aranan)) {
 
                 System.out.println(kitapAdi + " : " + yazarBilgisi);
-                bulunanKitap=true;
+                bulunanKitap = true;
             }
 
         }
-        if (!bulunanKitap){
+        if (!bulunanKitap) {
             System.out.println("Girilen kriterlere uygun kitap bulunamadi");
         }
 
@@ -290,7 +287,7 @@ public class KitapManager extends Veritabani {
     public static void kitapListesiYazdir() throws InterruptedException { //Üye Listesi Yazdır Metodundan Faydalanabilirsiniz...
 
         //TODO kitaplar.Map'in Value larını almak için  Set<Map.Entry<String, String>> cinsinden myEntrySet tanımlayın...
-        Set<Map.Entry<String,String>> kitaplarEntrySet=kitaplarMap.entrySet();
+        Set<Map.Entry<String, String>> kitaplarEntrySet = kitaplarMap.entrySet();
 
         System.out.println(
                 "\n============ TECHNO STUDY CONFLUENCE ==========\n" +
@@ -305,9 +302,9 @@ public class KitapManager extends Veritabani {
         System.out.println();
 
 
-        for(Map.Entry<String,String> each : kitaplarEntrySet){
-            String eachKey=each.getKey();
-            String eachValue=each.getValue();
+        for (Map.Entry<String, String> each : kitaplarEntrySet) {
+            String eachKey = each.getKey();
+            String eachValue = each.getValue();
             System.out.println(eachKey + " : " + eachValue + " | ");
         }
 
