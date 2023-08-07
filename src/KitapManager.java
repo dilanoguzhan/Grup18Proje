@@ -5,10 +5,12 @@ import java.util.Set;
 public class KitapManager extends Veritabani {
 
     static Scanner scan = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void kitapMenu() throws InterruptedException {
         String tercih = "";
-        {// TODO Kullanıcı Çıkış Yapmadığı sürece menüde kalalım...
+
+        while (!tercih.equalsIgnoreCase("Q")) {// TODO Kullanıcı Çıkış Yapmadığı sürece menüde kalalım...
             System.out.println(
                     "\n============ TECHNO STUDY BOOTCAMP ============\n" +
                             "================== KITAP MENU =================\n" +
@@ -24,21 +26,43 @@ public class KitapManager extends Veritabani {
 
             //TODO Kullanıcıdan alacağınız tercihe göre ilgili menü metodlarına yönlendirmeler yapın...
 
-            {
-                kitapListesiYazdir();
-                // Yazar Ismiyle Kitap Bulma
-                yazardanKitapBulma();
-                // Kitap Turu veya Yayin Tarihi Ile Kitap Bulma
-                turVeyaYayinTarihiIleKitapBulma();
-                // Bilgilerini Girerek Kitap Ekleme
-                kitapEkle();
-                isimIleKitapSilme();
-                kitapOduncAl();
-                kitapIadeEt();
-                Helper.anaMenu();
-                Helper.projeDurdur();
-                System.out.println("Lutfen gecerli bir tercih giriniz");
+            System.out.print("Tercihinizi yapiniz: ");
+            tercih = scan.nextLine();
+
+            switch (tercih.toLowerCase()) {
+                case "1":
+                    kitapListesiYazdir();
+                    break;
+                case "2":
+                    yazardanKitapBulma();
+                    break;
+                case "3":
+                    turVeyaYayinTarihiIleKitapBulma();
+                    break;
+                case "4":
+                    kitapEkle();
+                    break;
+                case "5":
+                    isimIleKitapSilme();
+                    break;
+                case "6":
+                    kitapOduncAl();
+                    break;
+                case "7":
+                    kitapIadeEt();
+                    break;
+                case "a":
+                    Helper.anaMenu();
+                    break;
+                case "q":
+                    System.out.println("Programdan cikis yapiliyor...");
+                    break;
+                default:
+                    System.out.println("Gecerli bir tercih giriniz!");
+
             }
+
+
         }
         Helper.projeDurdur();
 
@@ -236,11 +260,26 @@ public class KitapManager extends Veritabani {
     public static void kitapListesiYazdir() throws InterruptedException { //Üye Listesi Yazdır Metodundan Faydalanabilirsiniz...
 
         //TODO kitaplar.Map'in Value larını almak için  Set<Map.Entry<String, String>> cinsinden myEntrySet tanımlayın...
+        Set<Map.Entry<String,String>> kitaplarEntrySet=kitaplarMap.entrySet();
 
         System.out.println(
                 "\n============ TECHNO STUDY CONFLUENCE ==========\n" +
                         "================= KITAP LISTESI ===============\n" +
                         "Kitap Ismi    :   Yazar Ismi , Kitap Turu , Yayin Yili");
+
+        System.out.print("Kitap Listesi yazdiriliyor...");
+        for (int i = 0; i < 20; i++) {
+            Thread.sleep(100);
+            System.out.print(">");
+        }
+        System.out.println();
+
+
+        for(Map.Entry<String,String> each : kitaplarEntrySet){
+            String eachKey=each.getKey();
+            String eachValue=each.getValue();
+            System.out.println(eachKey + " : " + eachValue + " | ");
+        }
 
 
         //TODO Kitapları listeleyecek metodu oluşturun...
