@@ -214,7 +214,13 @@ public class KitapManager extends Veritabani {
 
         //TODO kitaplar.Map'in Value larını almak için  Set<Map.Entry<String, String>> cinsinden myEntrySet tanımlayın...
 
-        System.out.println("Istediginiz kitabin turunu yaziniz: ");
+        Scanner oku=new Scanner(System.in);
+        System.out.println("Aradiginiz kitabin türünü veya yayin yilini giriniz: ");
+        String aranan= oku.nextLine();
+
+        Set<Map.Entry<String, String>> entrySet = kitaplarMap.entrySet();
+        boolean bulunanKitap=false;
+
         System.out.println("(Tarih, Polisiye, Kurgu, Roman, Destan)");
         //TODO Metodu kullanıcıdan alacağınız girdileri kullanarak tamamlayın...
 
@@ -223,6 +229,23 @@ public class KitapManager extends Veritabani {
                         "================= KITAP LISTESI ===============\n" +
 
                         "Kitap Ismi     :   Yazar Ismi , Kitap Turu , Yayin Yili");
+        for (Map.Entry<String, String> entry: entrySet){
+            String kitapAdi= entry.getKey();
+            String yazarBilgisi= entry.getValue();
+            String[] kitapBilgileri= yazarBilgisi.split(", ");
+            String kitapTuru=kitapBilgileri[1];
+            String yayinYili=kitapBilgileri[2];
+
+            if (kitapTuru.equalsIgnoreCase(aranan)|| yayinYili.equals(aranan)){
+
+                System.out.println(kitapAdi + " : " + yazarBilgisi);
+                bulunanKitap=true;
+            }
+
+        }
+        if (!bulunanKitap){
+            System.out.println("Girilen kriterlere uygun kitap bulunamadi");
+        }
 
     }
 
